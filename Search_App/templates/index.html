@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="{% static 'css/style.min.css' %}" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Amazon Automation</title>
+  </head>
+  <body>
+    <main>
+      <section class="intro">
+        <header>
+          <h1>Amazon Automation</h1>
+        </header>
+      </section>
+      <section class="searchArea">
+        <header>
+          <h2>Search for a product on Amazon.</h2>
+        </header>
+        <form action="{% url 'search_result' %}" method="POST">
+          {% csrf_token %}
+          <input
+            id="searchBox"
+            type="search"
+            placeholder="Enter search item here..."
+            name="searchItem"
+            required
+          />
+          <input class="solid btnSize" type="submit" value="GO!" />
+        </form>
+      </section>
+      <section class="product-results">
+        <table>
+          {% for key, val in prods.items %}
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Stars</th>
+              <th># of Reviews</th>
+              <th>Product Image</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="tbName">
+                <a href="{{val.URL}}" target="_blank">{{val.Name}}</a>
+              </td>
+              <td class="tbPrice">
+                <a href="{{val.URL}}" target="_blank">{{val.Price}}</a>
+              </td>
+              <td class="tbStars">
+                <a href="{{val.URL}}" target="_blank">{{val.Stars}}</a>
+              </td>
+              <td class="tbReviews">
+                <a href="{{val.URL}}" target="_blank">{{val.NumReviews}}</a>
+              </td>
+              <td class="tbImg">
+                <a href="{{val.URL}}" target="_blank">
+                  <img class="img" src="{{val.Image}}"
+                /></a>
+              </td>
+            </tr>
+          </tbody>
+          {% endfor %}
+        </table>
+      </section>
+    </main>
+  </body>
+</html>

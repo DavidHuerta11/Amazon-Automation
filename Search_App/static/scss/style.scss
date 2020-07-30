@@ -1,0 +1,111 @@
+@import "_reset";
+$primaryColor: rgb(0, 0, 38);
+
+.intro {
+  background-color: $primaryColor;
+  padding: 2rem 25% 2rem 25%;
+
+  header {
+    text-align: center;
+  }
+
+  h1 {
+    font-family: "Lato", sans-serif, "Ariel";
+    font-weight: 400;
+    font-size: 3rem;
+    color: white;
+  }
+}
+
+.searchArea {
+  padding: 10% 25% 5% 25%;
+  text-align: center;
+  font-family: "Lato", sans-serif, "Ariel";
+  font-weight: 400;
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  form {
+    margin-top: 2rem;
+    width: 100%;
+    font-family: "Source Sans Pro", Helvetica, sans-serif;
+    font-size: 1.1rem;
+
+    input {
+      border-radius: 0.3rem;
+      padding: 0.2rem 0 0.2rem 0.8rem;
+    }
+
+    .solid {
+      background-color: $primaryColor;
+      border: none;
+      border-radius: 0.2rem;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+      color: white;
+      cursor: pointer;
+    }
+
+    .btnSize {
+      font-weight: 600;
+      width: 4rem;
+      padding: 0.3rem 0 0.3rem 0;
+    }
+  }
+}
+
+.product-results {
+  font-family: "Lato", sans-serif, "Ariel";
+  font-weight: 400;
+  font-size: 1.1rem;
+  padding: 5% 10% 10% 10%;
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  thead {
+    border: 2px solid $primaryColor;
+    background-color: lightcyan; //rgb(242, 242, 242);
+    padding: 0;
+  }
+
+  th {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  tbody:hover {
+    font-weight: bold;
+  }
+
+  td {
+    text-align: center;
+    padding: 0;
+    vertical-align: middle;
+  }
+
+  .img {
+    width: 7rem;
+    height: auto;
+  }
+
+  .tbName {
+    width: 20%;
+  }
+  .tbPrice {
+    width: 20%;
+  }
+  .tbStars {
+    width: 20%;
+  }
+  .tbReviews {
+    width: 20%;
+  }
+  .tbImg {
+    width: 20%;
+  }
+}
