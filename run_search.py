@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.firefox.options import Options
+#from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.by import By
@@ -11,6 +11,7 @@ from selenium.common.exceptions import NoSuchElementException
 
 import re
 import time
+import os
 
 
 class amazonBot(object):
@@ -22,10 +23,16 @@ class amazonBot(object):
 
         self.amazon_url = "https://www.amazon.com/"
         self.item = item
-        '''
+
         # Chrome
-        chromeDriver = "chromedriver"
-        self.driver = webdriver.Chrome(chromeDriver)
+        chrome_options = webdriver.ChromeOptions()
+        chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+        chrome_options.add_argument("--headless")
+        chrome_options.add_argument("--disable-dev-shm-usage")
+        chrome_options.add_argument("--no-sandbox")
+
+        self.driver = webdriver.Chrome(executable_path=os.environ.get(
+            "CHROMEDRIVER_PATH"), chrome_options=chrome_options)
         '''
         # Firefox
         self.profile = webdriver.FirefoxProfile()
@@ -33,7 +40,7 @@ class amazonBot(object):
         # self.options.add_argument("--headless")
         self.driver = webdriver.Firefox(firefox_profile=self.profile,
                                         options=self.options)
-
+        '''
         # Navigate to the Amazon URL.
         self.driver.get(self.amazon_url)
 

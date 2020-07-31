@@ -1,0 +1,1 @@
+web: gunicorn Amazon_Automation.wsgi
