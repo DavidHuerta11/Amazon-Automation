@@ -25,7 +25,7 @@
         <header>
           <h2>Search for a product on Amazon.</h2>
         </header>
-        <form action="{% url 'search_result' %}" method="POST">
+        <form id="search_form" action="{% url 'search_result' %}" method="POST">
           {% csrf_token %}
           <input
             id="searchBox"
@@ -36,6 +36,10 @@
           />
           <input class="solid btnSize" type="submit" value="GO!" />
         </form>
+      </section>
+      <section class="status-updates">
+        <p id="status"></p>
+        <div class="loader"></div>
       </section>
       <section class="product-results">
         <table>
@@ -74,5 +78,27 @@
         </table>
       </section>
     </main>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      $("#search_form").on("submit", function (e) {
+        const product = document.getElementById("searchBox").value;
+        const status = document.getElementById("status");
+        const statusUpdates = document.querySelector(".status-updates");
+        const loadIcon = statusUpdates.querySelector(".loader");
+
+        status.innerHTML = "Opening an instance of Amazon...";
+        loadIcon.style.display = "block";
+
+        setTimeout(() => {
+          status.innerHTML = `Searching for ${product}...`;
+        }, 11000);
+        setTimeout(() => {
+          status.innerHTML = `Searching 4-star & up ${product}...`;
+        }, 20000);
+        setTimeout(() => {
+          status.innerHTML = `Retrieving ${product} data...`;
+        }, 24000);
+      });
+    </script>
   </body>
 </html>
