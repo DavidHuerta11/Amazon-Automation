@@ -30,7 +30,7 @@ Django, Selenium, Python, JavaScript, CSS3, HTML5
 
 ## Problems faced
  
-The main problem faced was with the JSON data provided by the Open Weather API. Some of the JSON data was not valid which caused errors within the database. The file was also too large which caused PostgreSQL out of memory errors.
+The main problem faced was finding the correct xpath or 'path' to product elements on the amazon website since not every page has the same exact html path to similar elements.
 
 
 
